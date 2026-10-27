@@ -1,0 +1,4 @@
+.socialLinks { align-items: center; display: flex; flex-direction: row; flex-wrap: wrap; gap: 11px; }
+.socialLink { align-items: center; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); border-radius: 50%; color: #fff; display: inline-flex; height: 44px; justify-content: center; transition: background .18s ease, border-color .18s ease, transform .18s ease; width: 44px; }
+.socialLink svg { height: 23px; width: 23px; }
+.socialLink:hover { background: #830000; border-color: #ff9999; color: #fff; transform: translateY(-2px); }

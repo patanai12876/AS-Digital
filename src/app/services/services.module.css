@@ -1,0 +1,86 @@
+.serviceGrid {
+  display: grid;
+  gap: 32px;
+  grid-auto-rows: minmax(310px, auto);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.serviceCard {
+  background: #fff;
+  border: 1px solid #e7e3e1;
+  border-radius: 14px;
+  display: flex;
+  grid-column: auto;
+  min-height: 310px;
+  min-width: 0;
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+.serviceCard:hover { border-color: #bc0202; box-shadow: 0 17px 34px rgba(48, 0, 0, .08); transform: translateY(-3px); }
+
+.cardTrigger {
+  align-items: stretch;
+  background: transparent;
+  border: 0;
+  border-radius: inherit;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 24px;
+  text-align: left;
+  width: 100%;
+}
+
+.cardTrigger:focus-visible { outline: 3px solid #bc0202; outline-offset: 3px; }
+.cardTopline { align-items: center; display: flex; justify-content: space-between; }
+.cardNumber { align-items: center; display: inline-flex; gap: 7px; }
+.cardNumber strong { color: #bc0202; font: 700 20px/1 var(--font-montserrat), sans-serif; letter-spacing: -.04em; }
+.cardNumber > span,.cardLabel { color: #756e6b; font-size: 10px; font-weight: 700; letter-spacing: .12em; }
+.cardLabel { background: #f8eeee; border-radius: 999px; color: #830000; padding: 7px 10px; }
+.cardTitle { color: #111; font: 700 22px/1.3 var(--font-montserrat), sans-serif; letter-spacing: -.04em; margin-top: 24px; }
+.cardDescription { color: #625d5b; font-size: 15px; line-height: 1.65; margin-top: 10px; }
+.cardHighlights { align-items: flex-start; display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; padding: 18px 0 15px; }
+.cardHighlights > span { background: #f8eeee; border-radius: 999px; color: #6e1717; font-size: 12px; line-height: 1.3; padding: 7px 10px; }
+.cardCta { align-items: center; background: #bc0202; border-radius: 10px; color: #fff; display: flex; font-size: 14px; font-weight: 700; justify-content: space-between; margin-top: auto; min-height: 48px; padding: 0 16px; transition: background .2s ease, transform .2s ease; }
+.cardTrigger:hover .cardCta { background: #830000; transform: translateY(-1px); }
+
+.modal { align-items: center; background: rgba(19, 4, 4, .68); border: 0; color: #151111; display: none; height: 100vh; inset: 0; justify-content: center; margin: 0; max-height: none; max-width: none; overflow: hidden; padding: 24px; position: fixed; width: 100vw; }
+.modal:popover-open { display: flex; }
+.modalContent { animation: modal-rise .22s ease-out both; background: #fff; border-radius: 22px; box-shadow: 0 28px 80px rgba(0,0,0,.24); max-height: calc(100vh - 48px); max-width: 900px; overflow: auto; padding: 46px; position: relative; width: 100%; z-index: 1; }
+.modalBackdrop { background: transparent; border: 0; cursor: default; inset: 0; position: absolute; }
+.modalClose { align-items: center; background: #f8eeee; border: 0; border-radius: 50%; color: #830000; cursor: pointer; display: flex; font-size: 27px; height: 40px; justify-content: center; line-height: 1; position: absolute; right: 22px; top: 22px; width: 40px; }
+.modalEyebrow { color: #bc0202; font-size: 11px; font-weight: 700; letter-spacing: .12em; margin: 0 45px 13px 0; }
+.modal h2 { color: #111; font: 700 clamp(30px, 5vw, 42px)/1.12 var(--font-montserrat), sans-serif; letter-spacing: -.05em; margin: 0; }
+.modalIntro { color: #5d5654; font-size: 16px; line-height: 1.75; margin: 15px 0 26px; }
+.modal h3 { color: #171313; font: 700 17px/1.4 var(--font-montserrat), sans-serif; margin: 22px 0 10px; }
+.modalDeliverables { counter-reset: deliverable; display: grid; gap: 10px; grid-template-columns: repeat(3,minmax(0,1fr)); list-style: none; margin: 0; padding: 0; }
+.modalDeliverables li { background: #fffafa; border: 1px solid #f0dddd; border-radius: 12px; color: #514b49; counter-increment: deliverable; font-size: 14px; line-height: 1.6; min-height: 118px; padding: 15px; }
+.modalDeliverables li::before { color: #bc0202; content: "0" counter(deliverable); display: block; font: 700 16px/1 var(--font-montserrat),sans-serif; margin-bottom: 11px; }
+.modalServices { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.modalServices li { background: #f8eeee; border-radius: 999px; color: #6e1717; font-size: 14px; padding: 9px 13px; }
+.modalSteps { counter-reset: item; display: grid; gap: 9px; list-style: none; margin: 0; padding: 0; }
+.modalSteps li { background: #f7f6f5; border-radius: 10px; color: #514b49; counter-increment: item; font-size: 14px; line-height: 1.6; padding: 12px 14px; }
+.modalSteps li::before { background: #bc0202; border-radius: 50%; color: #fff; content: counter(item); display: inline-grid; font-size: 11px; font-weight: 700; height: 23px; margin-right: 10px; place-items: center; width: 23px; }
+.modalActions { align-items: center; border-top: 1px solid #eee8e6; display: flex; flex-wrap: wrap; gap: 18px; margin-top: 27px; padding-top: 20px; }
+.modalCta { align-items: center; background: #bc0202; border-radius: 12px; color: #fff; display: inline-flex; font-size: 14px; font-weight: 700; gap: 14px; justify-content: center; min-height: 48px; padding: 0 18px; }
+.modalCta:hover { background: #830000; }
+.closeText { background: none; border: 0; color: #830000; cursor: pointer; font: 600 14px var(--font-poppins), sans-serif; padding: 10px 0; }
+
+@media(max-width: 900px) {
+  .serviceGrid { gap: 24px; grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .serviceCard:nth-child(9) { grid-column: 1 / -1; justify-self: center; width: calc((100% - 24px) / 2); }
+}
+
+@media(max-width: 650px) {
+  .serviceGrid { gap: 20px; grid-auto-rows: minmax(290px,auto); grid-template-columns: 1fr; }
+  .serviceCard,.serviceCard:nth-child(9) { grid-column: auto; min-height: 290px; width: 100%; }
+  .cardTrigger { padding: 22px; }
+  .modalContent { padding: 32px 22px 24px; }
+  .modalDeliverables { grid-template-columns: 1fr; }
+  .modalDeliverables li { min-height: 0; }
+  .modalClose { right: 13px; top: 13px; }
+  .modalActions { align-items: stretch; flex-direction: column; }
+  .modalCta { justify-content: space-between; }
+}
