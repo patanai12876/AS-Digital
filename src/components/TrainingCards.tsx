@@ -1,12 +1,9 @@
 import { courses } from "@/lib/siteContent";
-import AutoOpenPopover from "@/components/AutoOpenPopover";
 import styles from "@/app/trainings/training.module.css";
 
 const whatsappNumber = "923097429289";
 
-export default function TrainingCards({ initialCourse }: { initialCourse?: string }) {
-  const selectedCourse = courses.find((course) => course.slug === initialCourse);
-
+export default function TrainingCards() {
   return (
     <>
       <div className={styles.courseGrid}>
@@ -68,7 +65,6 @@ export default function TrainingCards({ initialCourse }: { initialCourse?: strin
           );
         })}
       </div>
-      <AutoOpenPopover id={selectedCourse ? `course-info-${selectedCourse.slug}` : undefined} />
     </>
   );
 }

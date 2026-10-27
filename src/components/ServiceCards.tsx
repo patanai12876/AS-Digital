@@ -1,5 +1,4 @@
 import type { ServiceCard, ServiceGroup } from "@/lib/siteContent";
-import AutoOpenPopover from "@/components/AutoOpenPopover";
 import styles from "@/app/services/services.module.css";
 
 const whatsappNumber = "923097429289";
@@ -42,15 +41,10 @@ function ServiceModal({ service, idPrefix = "service-info" }: { service: Service
 export default function ServiceCards({
   services,
   groups = [],
-  initialOpen,
 }: {
   services: readonly ServiceCard[];
   groups?: readonly ServiceGroup[];
-  initialOpen?: string;
 }) {
-  const selectedGroup = groups.find((group) => group.slug === initialOpen);
-  const selectedService = selectedGroup ?? services.find((service) => service.slug === initialOpen);
-
   return (
     <>
       <div className={styles.serviceGrid}>
@@ -78,7 +72,6 @@ export default function ServiceCards({
         })}
       </div>
       {groups.map((group) => <ServiceModal key={group.slug} service={group} idPrefix="service-group-info" />)}
-      <AutoOpenPopover id={selectedService ? `${selectedGroup ? "service-group-info" : "service-info"}-${selectedService.slug}` : undefined} />
     </>
   );
 }
